@@ -17,3 +17,10 @@ Here's a basic study guide subject to change:
 - Implement your own `data class`
 - Implement your own Kotlin Unit test
 - Implement your own Java Unit test that calls Kotlin
+
+### Goals
+
+- Understand what Kotlin data classes do automatically for us
+- Understand how to call Kotlin data classes from Java (don’t worry, just works)
+- Understand named constructor parameters and what that means for Good Ol’ Builder patterns
+- Understand what Non-Nullable and Nullable types are
