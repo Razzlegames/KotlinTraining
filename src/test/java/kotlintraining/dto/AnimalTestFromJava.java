@@ -11,6 +11,7 @@ public class AnimalTestFromJava {
     @Test(expected = IllegalArgumentException.class)
     public void failNonNullableParameterSetToNull() {
 
+        // Will at least have compile warning since Kotlin compiles with @NotNull in JVM Byte code
         new Animal("Quack", null);
     }
 }
