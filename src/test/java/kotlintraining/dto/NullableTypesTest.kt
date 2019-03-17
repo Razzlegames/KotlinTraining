@@ -40,9 +40,7 @@ class NullableTypesTest {
         // bear is smart cast to NonNullable type, so you can use without "?" here
         // and anywhere after "bear = Bear()"
         bear.scratchBack()
-
-
-
     }
+
 
 }
