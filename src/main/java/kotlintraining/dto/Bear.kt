@@ -14,7 +14,7 @@ class Bear(val back: Back = Back()) {
         back.scratch()
     }
 
-    class Back() {
+    class Back {
         fun scratch() {
             print("Back scratched")
         }
