@@ -1,6 +1,5 @@
 package kotlintraining.dto
 
-import kotlintraining.dto.Animal
 import org.junit.Assert.assertNull
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -18,7 +17,11 @@ class AnimalTest {
     fun testConstructonWithSoundSet() {
 
         val animal = Animal(weight = 4, sound = "Bark")
+
         assertEquals("Bark", animal.sound)
         assertEquals(4, animal.weight)
+
+        // Uncomment below, cannot set val after construction, is effectively "final"
+        //animal.sound = "Yell"
     }
 }
