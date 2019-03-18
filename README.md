@@ -15,6 +15,7 @@ Here's a basic study guide subject to change:
 
 - Run the existing unit tests for `PersonTest.kt`
 - Implement your own `data class`
+  - Call `toString` on your `data class` and print results
 - Implement your own Kotlin Unit test
 - Implement your own Java Unit test that calls Kotlin
 - Construct your class using Named constructor arguments
@@ -23,7 +24,8 @@ Here's a basic study guide subject to change:
   - What did you have to do?
   - Try calling the function with null
   - Try calling with an actual object
-  - What happens? (Set break points or `print()` to see
+  - What happens? (Set break points or `print()` to see)
+ 
 
 ### Goals
 
