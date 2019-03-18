@@ -17,6 +17,13 @@ Here's a basic study guide subject to change:
 - Implement your own `data class`
 - Implement your own Kotlin Unit test
 - Implement your own Java Unit test that calls Kotlin
+- Construct your class using Named constructor arguments
+- Create a function with Nullable type as a parameter in a test
+  - Call a method on this object with a nullable type
+  - What did you have to do?
+  - Try calling the function with null
+  - Try calling with an actual object
+  - What happens? (Set break points or `print()` to see
 
 ### Goals
 
@@ -24,3 +31,4 @@ Here's a basic study guide subject to change:
 - Understand how to call Kotlin data classes from Java (don’t worry, just works)
 - Understand named constructor parameters and what that means for Good Ol’ Builder patterns
 - Understand what Non-Nullable and Nullable types are
+
