@@ -25,7 +25,7 @@ public class IfElse {
         return StringUtils.length(middleName) == 1 ? middleName + "." : middleName;
     }
 
-    public String complexIfElse(String firstName) {
+    public String multipleIfElse(String firstName) {
 
         if (firstName.equals("DOUG")) {
             return "Your name is Doug";
