@@ -19,6 +19,7 @@ data class PrimaryUserInfoDTO(
 data class NameDTO(
     var firstName: String,
     var middleName: String? = null,
+    var middleInitial: String? = null,
     var lastName: String,
     var title: String? = null,
     var suffix: String? = null
