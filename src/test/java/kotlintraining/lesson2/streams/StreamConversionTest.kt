@@ -1,7 +1,10 @@
 package kotlintraining.lesson2.streams
 
+import io.mockk.every
+import io.mockk.mockk
 import kotlintraining.lesson2.dto.*
 import org.junit.Test
+import java.lang.RuntimeException
 import java.time.LocalDate
 import java.time.Month
 import kotlin.test.*
@@ -76,6 +79,24 @@ class StreamConversionTest {
 
         assertTrue(testSubject.containsArizonaResident(users))
         assertFalse(testSubject.containsArizonaResident(users.subList(0, 2)))
+    }
+
+    @Test
+    fun containsArizonaResident_ExceptionThrowingResidents() {
+
+        val mockAddressDTO = mockk<AddressDTO>()
+
+        every { mockAddressDTO.state } throws RuntimeException("shouldn't be accessing this")
+        every { mockAddressDTO.addressType } throws RuntimeException("shouldn't be accessing this")
+
+        val users = listOf(
+            UserInfoDTO(PrimaryUserInfoDTO(addresses = getListOfAddressesForUser(listOf(Pair(AddressType.BUSINESS, "PA"), Pair(AddressType.RESIDENTIAL, "CA"))))),
+            UserInfoDTO(PrimaryUserInfoDTO(addresses = getListOfAddressesForUser(listOf(Pair(AddressType.RESIDENTIAL, "AZ"), Pair(AddressType.RESIDENTIAL, "CO"))))),
+            UserInfoDTO(PrimaryUserInfoDTO(addresses = listOf(mockAddressDTO))),
+            UserInfoDTO(PrimaryUserInfoDTO(addresses = getListOfAddressesForUser(listOf(Pair(AddressType.BUSINESS, "PA"), Pair(AddressType.RESIDENTIAL, "AZ")))))
+        )
+
+        assertTrue(testSubject.containsArizonaResident(users))
     }
 
     @Test

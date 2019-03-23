@@ -34,3 +34,22 @@ Here's a basic study guide subject to change:
 - Understand named constructor parameters and what that means for Good Ol’ Builder patterns
 - Understand what Non-Nullable and Nullable types are
 
+## Lesson 2
+
+- Learn additional basic Kotlin control structures and how they differ from Java
+- Examples of converting Optionals to type-safe accessors and null coalescing operators
+- Examples of converting streams to Kotlin types
+
+### Exercises
+
+- Convert IfElseConversion class to Kotlin.  Run tests.
+- Convert WhenConversion class to Kotlin.  Run tests and implement missing methods.
+- Convert OptionalConversion class to Kotlin.  Run tests and implement missing methods.
+- Convert StreamConversion class to Kotlin.  Run tests and implement missing methods.
+
+### Goals
+
+- Beginning understanding of "when"
+- Understand how if/else differs from Java
+- Understand how to convert Optionals to nullable types in Kotlin
+- Understand how to convert Streams to Kotlin collections and when to use `asSequence()`
