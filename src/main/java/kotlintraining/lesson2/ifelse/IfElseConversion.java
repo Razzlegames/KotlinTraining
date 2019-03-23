@@ -3,7 +3,7 @@ package kotlintraining.lesson2.ifelse;
 import kotlintraining.lesson2.dto.NameDTO;
 import org.apache.commons.lang3.StringUtils;
 
-public class IfElse {
+public class IfElseConversion {
 
     /**
      * Returns the middle name if present and the middle initial if not
