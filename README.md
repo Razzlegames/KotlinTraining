@@ -64,7 +64,7 @@ Here's a basic study guide subject to change:
 - Create a more challenging extension function for creating a map from a `List`, `toChunkedMap()` 
 - Get all existing unit tests to pass
 
-## Goals
+### Goals
 
 - See how easy it is to extend existing Java library classes, even without needing the source code
 - Utilize the `stream` like conversion skills from Lesson 2.
