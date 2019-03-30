@@ -14,9 +14,8 @@ class TryDestructuringTest {
     fun printOutPetMap() {
 
         // TODO iterate over the map and get map as a (key, value)
-        for( (key, value) in petMap) {
-            print("Key $key value $value ")
-        }
+        // Print out key and value
+
     }
 
     /**
@@ -32,8 +31,6 @@ class TryDestructuringTest {
     fun destructureAnimalClass() {
 
         val animal = Animal(sound = "chirp", weight = 1)
-
-        val (sound, weight) = animal
 
         assertEquals(animal.sound, sound)
         assertEquals(animal.weight, weight)
