@@ -57,12 +57,14 @@ Here's a basic study guide subject to change:
 ## Lesson 3
 
 - Learn about extension functions
+- Learn about basic destructuring
 
 ### Exercises
 
 1. Create a basic extension function for counting odd numbers in a list, `countOdd()`
 2. Create a more challenging extension function for creating a map from a `List`, `toChunkedMap()` 
 3. Print out `petMap` using destructuring
+4. Use destructing on `Animal` class
 
 - Get all existing unit tests to pass
 
