@@ -29,8 +29,7 @@ class TryExtensionsTest {
     }
 
     /**
-     *  Excercise 1 test
-     *    Change to
+     *  Exercise 1 test
      */
     @Test
     fun countAllOddNumbers() {
