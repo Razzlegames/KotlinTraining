@@ -60,8 +60,10 @@ Here's a basic study guide subject to change:
 
 ### Exercises
 
-- Create a basic extension function for counting odd numbers in a list, `countOdd()`
-- Create a more challenging extension function for creating a map from a `List`, `toChunkedMap()` 
+1. Create a basic extension function for counting odd numbers in a list, `countOdd()`
+2. Create a more challenging extension function for creating a map from a `List`, `toChunkedMap()` 
+3. Print out `petMap` using destructuring
+
 - Get all existing unit tests to pass
 
 ### Goals
@@ -69,3 +71,4 @@ Here's a basic study guide subject to change:
 - See how easy it is to extend existing Java library classes, even without needing the source code
 - Utilize the `stream` like conversion skills from Lesson 2.
 - Exposure to the different `for` loop and range syntax in Kotlin (seen in Unit test)
+- Exposure to using `to` infix operator for generating `Pair`s while constructing a `Map`
