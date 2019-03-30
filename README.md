@@ -53,3 +53,19 @@ Here's a basic study guide subject to change:
 - Understand how if/else differs from Java
 - Understand how to convert Optionals to nullable types in Kotlin
 - Understand how to convert Streams to Kotlin collections and when to use `asSequence()`
+
+## Lesson 3
+
+- Learn about extension functions
+
+### Exercises
+
+- Create a basic extension function for counting odd numbers in a list, `countOdd()`
+- Create a more challenging extension function for creating a map from a `List`, `toChunkedMap()` 
+- Get all existing unit tests to pass
+
+## Goals
+
+- See how easy it is to extend existing Java library classes, even without needing the source code
+- Utilize the `stream` like conversion skills from Lesson 2.
+- Exposure to the different `for` loop and range syntax in Kotlin (seen in Unit test)
