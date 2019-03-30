@@ -31,12 +31,6 @@ fun String?.defaultIfEmpty2(default: String) : String {
 val NUMBER_LIST = listOf(530, 3, 1, 9, 6, 2, 12324, 333, 5, 99, 1002)
 
 /**
- * Excercise 1 Solution
- */
-fun List<Int>?.countOdd() = this?.filter { it % 2 != 0 }?.count() ?: 0
-
-
-/**
  *  TODO Exercise 2
  *
  *  Create an extension function called "toChunkedMap()"
@@ -53,13 +47,4 @@ fun List<Int>?.countOdd() = this?.filter { it % 2 != 0 }?.count() ?: 0
  *
  */
 
-/**
- * Exercise 2 Solution
- */
-fun <T> List<T>.toChunkedMap() : Map<T, T?> {
-
- return this.chunked(2)
-     .map { Pair(it.first(), if(it.size > 1) it.last() else null) }
-     .toMap()
-}
 
