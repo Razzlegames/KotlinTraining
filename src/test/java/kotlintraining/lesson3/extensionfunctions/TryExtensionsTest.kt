@@ -37,6 +37,9 @@ class TryExtensionsTest {
         print(NUMBER_LIST.countOdd())
 
         assertEquals(NUMBER_OF_ODDS, NUMBER_LIST.countOdd())
+
+        val nullList: List<Int>? = null
+        assertEquals(0, nullList.countOdd())
     }
 
     /**
