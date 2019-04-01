@@ -55,7 +55,7 @@ Here's a basic study guide subject to change:
 - Understand how to convert Streams to Kotlin collections and when to use `asSequence()`
 
 ## Lesson 3
-
+![Extension functions](https://cdn.programiz.com/sites/tutorial2program/files/kotlin-extension-function.jpg)
 - Learn about extension functions
 - Learn about basic destructuring
 
