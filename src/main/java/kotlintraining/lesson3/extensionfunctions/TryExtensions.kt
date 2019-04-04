@@ -46,5 +46,7 @@ val NUMBER_LIST = listOf(530, 3, 1, 9, 6, 2, 12324, 333, 5, 99, 1002)
  *   Extension function List<T>.chunked(int) can be used
  *
  */
+//Another way to do using associateBy()
+fun List<Int>?.toChunkedMap() = this.orEmpty().chunked(2).associateBy ( {it.get(0)}, {if (it.size>1) it.get(1) else null} ).toMap()
 
 
