@@ -30,6 +30,9 @@ fun String?.defaultIfEmpty2(default: String) : String {
  */
 val NUMBER_LIST = listOf(530, 3, 1, 9, 6, 2, 12324, 333, 5, 99, 1002)
 
+fun List<Int>?.countOdd() = this.orEmpty().filter { it.rem(2)==1 }.count()
+
+
 /**
  *  TODO Exercise 2
  *

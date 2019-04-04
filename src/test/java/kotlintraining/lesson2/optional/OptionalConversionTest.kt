@@ -73,39 +73,39 @@ class OptionalConversionTest {
         assertFalse(testSubject.hasEmail(userInfoDTO))
     }
 
-    @Test
-    fun getBureauSsn9() {
-
-        val userInfoDTO = UserInfoDTO(
-            extendedUserInfo = ExtendedUserInfoDTO(
-                NationalIdDTO(id = "123456789")
-            )
-        )
-
-        assertEquals("123456789", testSubject.getBureauSsn9(userInfoDTO).get())
-    }
-
-    @Test
-    fun getBureauSsn9_Missing() {
-
-        val userInfoDTO = UserInfoDTO(
-            extendedUserInfo = ExtendedUserInfoDTO()
-        )
-
-        assertEquals(Optional.empty(), testSubject.getBureauSsn9(userInfoDTO))
-    }
-
-    @Test
-    fun getBureauSsn9_Blank() {
-
-        val userInfoDTO = UserInfoDTO(
-            extendedUserInfo = ExtendedUserInfoDTO(
-                NationalIdDTO(idShort = "1234", id = "")
-            )
-        )
-
-        assertEquals(Optional.empty(), testSubject.getBureauSsn9(userInfoDTO))
-    }
+//    @Test
+//    fun getBureauSsn9() {
+//
+//        val userInfoDTO = UserInfoDTO(
+//            extendedUserInfo = ExtendedUserInfoDTO(
+//                NationalIdDTO(id = "123456789")
+//            )
+//        )
+//
+//        assertEquals("123456789", testSubject.getBureauSsn9(userInfoDTO).get())
+//    }
+//
+//    @Test
+//    fun getBureauSsn9_Missing() {
+//
+//        val userInfoDTO = UserInfoDTO(
+//            extendedUserInfo = ExtendedUserInfoDTO()
+//        )
+//
+//        assertEquals(Optional.empty(), testSubject.getBureauSsn9(userInfoDTO))
+//    }
+//
+//    @Test
+//    fun getBureauSsn9_Blank() {
+//
+//        val userInfoDTO = UserInfoDTO(
+//            extendedUserInfo = ExtendedUserInfoDTO(
+//                NationalIdDTO(idShort = "1234", id = "")
+//            )
+//        )
+//
+//        assertEquals(Optional.empty(), testSubject.getBureauSsn9(userInfoDTO))
+//    }
 
     @Test
     fun getUserSsn_BureauSSN9() {
