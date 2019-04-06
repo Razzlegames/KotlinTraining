@@ -74,3 +74,23 @@ Here's a basic study guide subject to change:
 - Utilize the `stream` like conversion skills from Lesson 2.
 - Exposure to the different `for` loop and range syntax in Kotlin (seen in Unit test)
 - Exposure to using `to` infix operator for generating `Pair`s while constructing a `Map`
+
+
+## Lesson 4
+- Learn about Scoping functions
+
+Scoping functions are handy ways to reduce code when processing objects. They can are very similar and there is quite
+a bit of overlap on uses.  As such there are many solutions to the same problem.
+
+These functions are
+- `run`
+- `with`
+- `T.run`
+- `T.let`
+- `T.also`
+- `T.apply`
+
+Note `T.` just means you call the extension function on an object, e.g., `T.also` used as:  `object.also{ process(it)}`
+
+
+
