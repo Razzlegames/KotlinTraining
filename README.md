@@ -79,9 +79,8 @@ Here's a basic study guide subject to change:
 ## Lesson 4
 - Learn about Scoping functions
 
-Scoping functions are handy ways to reduce code when processing objects. They can are very similar and there is quite
-a bit of overlap on uses.  As such there are many solutions to the same problem.
 
+### Functions
 These functions are
 - `run`
 - `with`
@@ -92,5 +91,109 @@ These functions are
 
 Note `T.` just means you call the extension function on an object, e.g., `T.also` used as:  `object.also{ process(it)}`
 
+### Similar patterns
+
+Scoping functions are handy ways to reduce code when processing objects. They are very similar and there is quite
+a bit of overlap on uses.  As such there are many solutions to the same problem.
+
+For example you could construct an object and pass to a processing function as:
+
+```
+class Level {
+
+   ///... in  some method. Level contains Level.checkCollisions(Mario)
+   Mario(powerUp = PowerUp.MUSHROOM)
+      .also { checkCollisions(it)}
+```
+
+Here are some other ways:
+```
+  Mario(powerUp = PowerUp.MUSHROOM)
+      .apply{ checkCollisions(this)}
+```
+
+```
+  Mario(powerUp = PowerUp.MUSHROOM)
+      .let { checkCollisions(it)}
+```
+
+```
+  Mario(powerUp = PowerUp.MUSHROOM)
+      .run { checkCollisions(this)}
+```
+
+```
+  Mario(powerUp = PowerUp.MUSHROOM)
+      .run { checkCollisions(this)}
+```
+
+```
+  with(Mario(powerUp = PowerUp.MUSHROOM)) { 
+     checkCollisions(this)
+  }
+```
+
+#### Chart of behavior
+As a reference this is what each is doing:
+
+| Function  | Type        | Passed as | Returns   |
+| :---      | :---        | :---      | :---       |
+| also      | Extension   | it        | Same      |
+| apply     | Extension   | this      | Same      |
+| let       | Extension   | it        | Last Line in Block |
+| run       | Extension   | this      | Last Line in Block |
+| with      | Stand alone | this      | Last Line in Block |
+
+### So what is the best practice in the last example?
+
+Well that depends on your intent of course but let's just say:
+ - We aren't returning `Mario` and 
+ - just running that operation `checkCollisions`
+ 
+Given these conditions I'd avoid `T.let`, `run`, `T.run` and `with`, 
+- They all return the last line of the block
+- We should probably only use these functions for `mapping` similar to `Java`'s `Optional.map`, `Stream.map` etc.
+- This can avoid any confusion/mistakes while chaining calls together
+  - Immutable lambda chaining, so to speak  
 
 
+### When do we use `let`, `run` and `with`?
+
+- `let` is great for mapping types
+  - Especially in nullable map chaining (like `Java`'s `Optional.map`)
+ 
+```
+// Param is a nullable type Type?
+object.param
+  ?.let{ 
+      mutate(it)
+  }
+  // Now output from `mutate(it)` is used
+  ?.let {
+      mutateAgain(it)
+  }
+  // Maybe you change some mutable state from `mutateAgain(it)` here
+  ?.apply {
+      state = "OK"
+  }
+```
+
+Note the `state = "OK"` only executes if all the other operations succeed without returning `null` and 
+if `param` isn't null.
+
+- `run` seems to be a rare case where you want to scope the object as `this` and possibly map to a
+ different value after processing.  
+   - I find it clearer to do these in 2 atomic steps for readability
+     - e.g. 
+     ```
+     object.apply{ /*...*/}
+         .let { /* map stuff */} 
+     ```
+- `with` is the same as run only the syntax is different
+    ```
+    with(object) {
+        // set some internal state
+        // Return something else
+    }
+    ```
+    - I'd favor `apply` and not mutate state, or do as suggested with run and use `.apply{}.let{}` otherwise
