@@ -133,11 +133,6 @@ Here are some other ways:
 ```
 
 ```
-  Mario(powerUp = PowerUp.MUSHROOM)
-      .run { checkCollisions(this)}
-```
-
-```
   with(Mario(powerUp = PowerUp.MUSHROOM)) { 
      checkCollisions(this)
   }
