@@ -75,9 +75,19 @@ Here's a basic study guide subject to change:
 - Exposure to the different `for` loop and range syntax in Kotlin (seen in Unit test)
 - Exposure to using `to` infix operator for generating `Pair`s while constructing a `Map`
 
-
 ## Lesson 4
 - Learn about Scoping functions
+
+Scoping functions are the bread and butter of `Kotlin`.  You'll see these everywhere peppered in code bases and for 
+GOOD reason! They can really simplify and add flexibility to your code base.
+
+- They provide an easy way to chain together calls and avoid having to repeat variable names. 
+- Many times they avoid having to declare extra variables  
+- Reduce lines of code to maintain
+- Clarify intent
+- Easier to understand with less code clutter
+- Provide all the conveniences of chaining calls together
+  - Formally called [`Monads`](https://en.wikipedia.org/wiki/Monad_(functional_programming)) 
 
 
 ### Functions
