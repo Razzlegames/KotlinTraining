@@ -22,21 +22,19 @@ class FakeService {
         // - map all request items to convertedItemsCodes in response
         // - map animalWeight to request.animal weight using a scoping function
         return Response()
-            .apply {
-
-                // You can now use convertedItemsCodes as if you're in a Response object
-                convertedItemsCodes = request.items.map{ convertToItemCode(it)}
-
-                // Map animal to weight as an Int.
-                // Use a function that passes "it" returns "Last Line in Block"
-                animalWeight = request.animal?.let { getAnimalWeightAsInt(it) }
-            }
+//            . {
+//
+//                // You can now use convertedItemsCodes as if you're in a Response object
+//
+//                // Map animal to weight as an Int.
+//                // Use a function that passes "it" returns "Last Line in Block"
+//            }
 
             // TODO
             // Now use a different scoping function to call doSomethingWithResponse
-            .also {
-                doSomethingWithResponse(it)
-            }
+//            . {
+//
+//            }
 
             // We can also give the lambda argument "it", a better name, if needed
             //  (especially useful if there's many nested Scoped functions: "let{  also{ apply{} } }" etc)
@@ -45,12 +43,13 @@ class FakeService {
             //  NOTE: Not all scoping functions let you do this naming?
             //    - Which ones do?
             //    - What function choice is appropriate here?
-            .also { response ->   doSomethingWithResponse(response)}
+
+//            . { }
 
             // TODO
             // Call a scoping function here that will call Response.processSomethingWhenDone
             // Use a function that passes "this"
-            .apply { processSomethingWhenDone() }
+//            . {  }
     }
 
     // Obviously theses helper functions are trivial and not needed they serve only to
