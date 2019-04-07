@@ -108,7 +108,7 @@ a bit of overlap on uses.  As such there are many solutions to the same problem.
 
 For example you could construct an object and pass to a processing function as:
 
-```
+```kotlin
 class Level {
 
    ///... in  some method. Level contains Level.checkCollisions(Mario)
@@ -117,22 +117,22 @@ class Level {
 ```
 
 Here are some other ways:
-```
+```kotlin
   Mario(powerUp = PowerUp.MUSHROOM)
       .apply{ checkCollisions(this)}
 ```
 
-```
+```kotlin
   Mario(powerUp = PowerUp.MUSHROOM)
       .let { checkCollisions(it)}
 ```
 
-```
+```kotlin
   Mario(powerUp = PowerUp.MUSHROOM)
       .run { checkCollisions(this)}
 ```
 
-```
+```kotlin
   with(Mario(powerUp = PowerUp.MUSHROOM)) { 
      checkCollisions(this)
   }
@@ -167,9 +167,9 @@ Given these conditions I'd avoid `T.let`, `run`, `T.run` and `with`,
 - `let` is great for mapping types
   - Especially in nullable map chaining (like `Java`'s `Optional.map`)
  
-```
+```kotlin
 // Param is a nullable type Type?
-object.param
+someObject.param
   ?.let{ 
       mutate(it)
   }
@@ -188,14 +188,21 @@ if `param` isn't null.
 
 - `run` seems to be a rare case where you want to scope the object as `this` and possibly map to a
  different value after processing.  
+   ```kotlin
+   someObject.run {
+      someListInObject.forEach {print(it)}
+      mapToSomething(someObject)
+   } 
+   ```
+   
    - I find it clearer to do these in 2 atomic steps for readability e.g. 
-     ```
-     object.apply{ /*...*/}
+     ```kotlin
+     someObject.apply{ /*...*/}
          .let { /* map stuff */} 
      ```
 - `with` is the same as `run` only the syntax is different
-    ```
-    with(object) {
+    ```kotlin
+    with(someObject) {
         // set some internal state
         // Return something else
     }
