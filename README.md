@@ -183,13 +183,12 @@ if `param` isn't null.
 
 - `run` seems to be a rare case where you want to scope the object as `this` and possibly map to a
  different value after processing.  
-   - I find it clearer to do these in 2 atomic steps for readability
-     - e.g. 
+   - I find it clearer to do these in 2 atomic steps for readability e.g. 
      ```
      object.apply{ /*...*/}
          .let { /* map stuff */} 
      ```
-- `with` is the same as run only the syntax is different
+- `with` is the same as `run` only the syntax is different
     ```
     with(object) {
         // set some internal state
@@ -197,3 +196,4 @@ if `param` isn't null.
     }
     ```
     - I'd favor `apply` and not mutate state, or do as suggested with run and use `.apply{}.let{}` otherwise
+
