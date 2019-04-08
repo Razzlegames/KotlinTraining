@@ -112,29 +112,42 @@ For example you could construct an object and pass to a processing function as:
 class Level {
 
    ///... in  some method. Level contains Level.checkCollisions(Mario)
+   // Mario class has a Int member called "coints" and public accessors for "var coins: Int"
    Mario(powerUp = PowerUp.MUSHROOM)
-      .also { checkCollisions(it)}
+      .also { 
+          it.coins = 10
+          checkCollisions(it)
+      }
 ```
 
 Here are some other ways:
 ```kotlin
   Mario(powerUp = PowerUp.MUSHROOM)
-      .apply{ checkCollisions(this)}
+      .apply{
+          coins = 10
+          checkCollisions(this)}
 ```
 
 ```kotlin
   Mario(powerUp = PowerUp.MUSHROOM)
-      .let { checkCollisions(it)}
+      .let { 
+          it.coins = 10
+          checkCollisions(it)
+      }
 ```
 
 ```kotlin
   Mario(powerUp = PowerUp.MUSHROOM)
-      .run { checkCollisions(this)}
+      .run { 
+          coins = 10
+          checkCollisions(this)
+      }
 ```
 
 ```kotlin
   with(Mario(powerUp = PowerUp.MUSHROOM)) { 
-     checkCollisions(this)
+      coins = 10
+      checkCollisions(this)
   }
 ```
 
