@@ -27,13 +27,13 @@ class TryDestructuringTest {
      *         -> Due to not being strict in destructured var naming
      *         -> This isn't an issue the other way around since we can use "named parameters" on construction
      */
-    @Test
-    fun destructureAnimalClass() {
-
-        val animal = Animal(sound = "chirp", weight = 1)
-
-        assertEquals(animal.sound, sound)
-        assertEquals(animal.weight, weight)
-    }
+//    @Test
+//    fun destructureAnimalClass() {
+//
+//        val animal = Animal(sound = "chirp", weight = 1)
+//
+//        assertEquals(animal.sound, sound)
+//        assertEquals(animal.weight, weight)
+//    }
 
 }
