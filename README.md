@@ -221,4 +221,8 @@ if `param` isn't null.
     }
     ```
     - I'd favor `apply` and not mutate state, or do as suggested with run and use `.apply{}.let{}` otherwise
+    
+## Lesson 5
+
+See [lesson 5 instructions](src/main/java/kotlintraining/lesson5/README.md)
 
