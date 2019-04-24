@@ -15,7 +15,7 @@ interface AccountInterface {
  *  - Just print on observe of change:
  *     - print("Name changed to $name") .
  *   - Still keep the same AccountInterface functionality (override fun name(String) etc)
- *      We still want to be able to set and get name from AccountEntityDTo
+ *      We still want to be able to set and get name from AccountEntityDTO
  */
 class AccountEntityDO(var name: String, val dob: String,
                       var open: Boolean = true) : AccountInterface {

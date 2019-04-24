@@ -48,6 +48,8 @@ class SwimmingBehavior : Swimming {
     }
 }
 
+// TODO Add a DigBehavior 
+
 // Any implementation of Flying, Swimming etc will be delegated to the passed
 //      Behavior implementation!
 data class Monster( var tailSize:Int = 0, val flying: Flying, val character: Character,
