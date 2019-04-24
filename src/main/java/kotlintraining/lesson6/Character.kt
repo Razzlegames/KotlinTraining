@@ -10,8 +10,9 @@ interface Character {
     fun getName(): String
 }
 
-class CharacterImpl : Character {
-    override fun getName() = "CharacterImpl"
+class CharacterBehavior : Character {
+
+    override fun getName() = "CharacterBehavior"
 
     override fun jump() {
         print("Character Jump")
@@ -26,14 +27,30 @@ class CharacterImpl : Character {
     }
 }
 
-class CharacterDto(character: Character) : Character by character
-
-data class Monster( var tailSize:Int = 0)
-
-class MonsterDto(val monster: Monster)  {
-    var tailSize : Int
-        get() = monster.tailSize
-        set(value: Int) {
-            monster.tailSize = value
-        }
+interface Flying {
+    fun fly()
 }
+
+class FlyingBehavior : Flying {
+
+    override fun fly() {
+        print("Flying")
+    }
+}
+
+interface Swimming {
+    fun swim()
+}
+
+class SwimmingBehavior : Swimming {
+    override fun swim() {
+        print("Swim")
+    }
+}
+
+// Any implementation of Flying, Swimming etc will be delegated to the passed
+//      Behavior implementation!
+data class Monster( var tailSize:Int = 0, val flying: Flying, val character: Character,
+                    val swimming: Swimming) :
+    Flying by flying, Character by character,
+    Swimming by swimming

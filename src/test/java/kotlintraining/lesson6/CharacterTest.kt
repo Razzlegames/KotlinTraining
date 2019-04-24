@@ -9,11 +9,19 @@ class CharacterTest {
     @Test
     fun testDelegation() {
 
-        val characterDto = CharacterDto(CharacterImpl())
-        characterDto.jump()
 
-        // Uses getName() from CharacterImpl automatically!
-        assertEquals("CharacterImpl", characterDto.getName())
+        val monster = Monster(flying = FlyingBehavior(), character = CharacterBehavior(),
+            swimming = SwimmingBehavior())
+
+        // Uses getName() from CharacterBehavior automatically!
+        assertEquals("CharacterBehavior", monster.getName())
+
+        // Cool! Monster gets all these behaviors delegated for free!
+        monster.swim()
+        monster.moveLeft()
+        monster.moveRight()
+        monster.jump()
+        monster.fly()
     }
 
 }

@@ -10,6 +10,8 @@ class Event(val name: String) {
 
 /**
  *  Example of observer pattern, simplified
+ *
+ *  Every time value changes, ProcessEvent() will be called!
  */
 class System {
     var value: Int by Delegates.observable(0) {
