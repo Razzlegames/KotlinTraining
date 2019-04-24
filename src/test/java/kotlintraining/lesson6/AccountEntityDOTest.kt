@@ -23,6 +23,16 @@ class AccountEntityDOTest {
         assertFalse(accountEntityDTO.open())
     }
 
+
+    @Test
+    fun testChangeName() {
+        val accountEntityDTO = AccountEntityDTO(AccountEntityDO(name = "guy", dob ="1/1/2001"))
+
+        assertEquals("guy", accountEntityDTO.name())
+        accountEntityDTO.name("new")
+        assertEquals("new", accountEntityDTO.name())
+    }
+
     /**
      *  someLazyValue is not initialized until requested.
      *

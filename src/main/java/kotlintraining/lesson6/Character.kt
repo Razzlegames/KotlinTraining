@@ -54,3 +54,5 @@ data class Monster( var tailSize:Int = 0, val flying: Flying, val character: Cha
                     val swimming: Swimming) :
     Flying by flying, Character by character,
     Swimming by swimming
+
+
