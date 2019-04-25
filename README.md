@@ -226,3 +226,8 @@ if `param` isn't null.
 
 See [lesson 5 instructions](src/main/java/kotlintraining/lesson5/README.md)
 
+## Lesson 6
+
+### Delegation
+See [lesson 6 instructions](src/main/java/kotlintraining/lesson6/README.md)
+
