@@ -2,7 +2,7 @@
 
 What is delegation?  
 
-![delgation](https://pics.me.me/iam-here-to-delegate-please-do-all-my-work-memes-com-28760470.png)
+![delgation](memes/officeDelegation.png)
 
 
 - Regular world
@@ -25,7 +25,7 @@ public class Thing implements Something {
 ## Composition and Aggregation 
  
  
- ![](https://cdn-images-1.medium.com/max/1200/1*AmtljyKspfCrXIm59bStlA.jpeg)
+ ![](memes/yoda.jpeg)
  
  Have you heard the [Composition Over Inheritance](https://en.wikipedia.org/wiki/Composition_over_inheritance )?  
  
@@ -90,6 +90,8 @@ class Thing: Something by Thing2
 
 ```
 
+Note how `Thing` is written in only 1 line of code, but contains all the functionality of `Thing2`!!!
+
 
 ### Challenges
 
@@ -104,9 +106,9 @@ class Thing: Something by Thing2
 
 In short:  Run some custom code on property set and get
 
-## Use cases
+## Use Cases
 
-### Lazy properties: 
+### Lazy Properties: 
   - the value gets computed only upon first access;
   
 ```kotlin
@@ -131,7 +133,7 @@ class AccountEntityDTO(accountEntityDO: AccountEntityDO) :
 }
 ```
   
-### observable properties
+### Observable Properties
   - listeners get notified about changes to this property;
   
 ```kotlin
@@ -153,7 +155,7 @@ class System {
     }
 }
 ```
-### Storing properties in a map, 
+### Storing Properties In a Map, 
    - instead of a separate field for each property.
    
    
@@ -190,7 +192,8 @@ Usage
 
 # Exercises Time
 
-![](https://media1.popsugar-assets.com/files/thumbor/e9tMKPudHR729Htk11qR4HX9HZY/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2018/01/03/277/n/1922398/addurlfjYzpC/i/When-you-finish-Friday-workout-regrets.jpg size=512x512)
+<img src="https://media1.popsugar-assets.com/files/thumbor/e9tMKPudHR729Htk11qR4HX9HZY/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2018/01/03/277/n/1922398/addurlfjYzpC/i/When-you-finish-Friday-workout-regrets.jpg" width="512" height="512">
 
+_____________
 - Add a `DigBehavior` to `Monster` class
 - TODO Add a observer Delegate to all name changes in `AccountEntityDO.name` (See PropertyDelegates for hints)
