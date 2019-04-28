@@ -27,7 +27,7 @@ public class Thing implements Something {
  
  ![](memes/yoda.jpeg)
  
- Have you heard the [Composition Over Inheritance](https://en.wikipedia.org/wiki/Composition_over_inheritance )?  
+ Have you heard of [Composition Over Inheritance](https://en.wikipedia.org/wiki/Composition_over_inheritance )?  
  
  This is basically the concept of holding a reference to an object and forwarding calls through it instead of inheriting from object directly. 
  
