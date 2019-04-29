@@ -112,7 +112,7 @@ For example you could construct an object and pass to a processing function as:
 class Level {
 
    ///... in  some method. Level contains Level.checkCollisions(Mario)
-   // Mario class has a Int member called "coints" and public accessors for "var coins: Int"
+   // Mario class has a Int member called "coins" and public accessors for "var coins: Int"
    Mario(powerUp = PowerUp.MUSHROOM)
       .also { 
           it.coins = 10
