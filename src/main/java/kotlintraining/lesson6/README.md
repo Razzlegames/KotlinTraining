@@ -191,6 +191,19 @@ Usage
  user.age = 10
 ```
 
+# Validation with `vetoable` 
+
+- Everytime a property is updated, it can easily be checked for consistency before setting
+
+```kotlin
+var max: Int by Delegates.vetoable(0) { property, oldValue, newValue ->
+        if (newValue > oldValue) true 
+        else throw IllegalArgumentException("New value must be larger than old value.")
+
+}
+```
+
+
 # Exercises Time
 
 <img src="https://media1.popsugar-assets.com/files/thumbor/e9tMKPudHR729Htk11qR4HX9HZY/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2018/01/03/277/n/1922398/addurlfjYzpC/i/When-you-finish-Friday-workout-regrets.jpg" width="512" height="512">
