@@ -191,7 +191,7 @@ Usage
  user.age = 10
 ```
 
-# Validation with `vetoable` 
+### Validation with `vetoable` 
 
 - Everytime a property is updated, it can easily be checked for consistency before setting
 
