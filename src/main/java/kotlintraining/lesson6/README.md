@@ -196,6 +196,7 @@ Usage
 - Everytime a property is updated, it can easily be checked for consistency before setting
 
 ```kotlin
+
 var max: Int by Delegates.vetoable(0) { property, oldValue, newValue ->
         if (newValue > oldValue) true 
         else throw IllegalArgumentException("New value must be larger than old value.")
