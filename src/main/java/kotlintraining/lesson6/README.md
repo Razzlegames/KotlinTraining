@@ -155,8 +155,9 @@ class System {
     }
 }
 ```
-### Storing Properties In a Map, 
-   - instead of a separate field for each property.
+### Storing Properties In a `Map`
+   - Everytime a property backed by the `Map` delegate changes, it's updated in the `Map`
+   - Data is stored in the variable AND in the `map`, redundantly.
    
    
  ```kotlin
