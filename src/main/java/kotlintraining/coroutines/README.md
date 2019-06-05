@@ -117,3 +117,35 @@ val result = first.await() + second.await() + third.await()
 - `result` isn't assigned until `first`, `second` and `third` `Deferred` objects have completed their tasks.
 
 Note: there's a cool extension function called `List<Deferred>.awaitAll()` :) You can use this on a list of tasks to wait till all are complete
+
+
+# Easy to measure time!
+
+Want to know the time it took to execute a coroutine?  No problem with `measureTimeMillis`
+
+```kotlin
+ @Test
+    fun lifeCycleTest() {
+        val mainTime = measureTimeMillis {
+            runBlocking {
+                // Run things
+            }
+        }
+
+        val defaultThreadsTime = measureTimeMillis {
+            runBlocking(Dispatchers.Default) {
+               // Run other things
+            }
+        }
+
+        println("------------------------------------------")
+        println("time in only Main Thread: $mainTime ms")
+        println("time in Default threads: $defaultThreadsTime ms")
+        println(">> Savings of: ${mainTime - defaultThreadsTime} ms")
+        println("------------------------------------------")
+    }
+```
+
+This is really handy for measuring Service call metrics at a granular level!
+
+- Know how long each client or Util took in the call etc.
