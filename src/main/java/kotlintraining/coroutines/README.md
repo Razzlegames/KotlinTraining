@@ -7,7 +7,9 @@
 do not have direct control as to what thread picks up each task. 
    - For the default use case, 
  they are all executed (`async`) on the same `"main"` thread (not concurrent).
+     - Tasks are actually queued up and ran in a non-deterministic sequence from a "work" queue for running on the same `JVM` `Thread`
    - You can easily change this to be truly multi threaded.  
+  
  
  - These "light weight threads" are scoped within a `CoroutineScope`
 which will manage the lifetime of the coroutine.
