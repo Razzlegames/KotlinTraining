@@ -88,7 +88,7 @@ println("Coroutine scope is over ${Thread.currentThread().name}")
 
 - Coroutines use the analogous `Deferred<T>`.  
   - Similar to `Future.get()`, 
-you can use `Deferred<T>.await()` or `List<Deferred<T>>.awaitAll()` block until all tasks are complete
+you can use `Deferred<T>.await()` or `List<Deferred<T>>.awaitAll()`, to block until all tasks are complete
   - `Deferred` is returned by `CoroutineScope.async`
 
 Previous example shown used `Deferred` :)
