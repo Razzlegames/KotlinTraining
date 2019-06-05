@@ -100,3 +100,5 @@ val result = first.await() + second.await() + third.await()
 ```
 
 - `result` isn't assigned until `first`, `second` and `third` `Deferred` objects have completed their tasks.
+
+Note: there's a cool extension function called `List<Deferred>.awaitAll()` :) You can use this on a list of tasks to wait till all are complete
