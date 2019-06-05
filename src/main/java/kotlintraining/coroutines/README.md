@@ -33,6 +33,19 @@ println("All Tasks Complete")
 
 ```
 
+## Flavors
+
+### `launch` : returns `Job`
+
+- "Fire and Forget", you don't need to know the result
+- You can wait for coroutine to finish with `Job.join()`
+
+### `async` : returns `Deferred<T>`
+
+- Use when you want to know the results of the coroutine
+- You can wait for result with `Deferred<T>.await(): T`
+  - This returns the result of the coroutine! :)
+
 ## Cool cool, but we have these ThreadPools...
 
 We can easily convert a `ThreadPoolExecutor` into a `CoroutineContext` for use in a coroutine
