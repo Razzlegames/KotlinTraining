@@ -149,3 +149,54 @@ Want to know the time it took to execute a coroutine?  No problem with `measureT
 This is really handy for measuring Service call metrics at a granular level!
 
 - Know how long each client or Util took in the call etc.
+
+
+# What about Errors? How do we stop child Coroutines?
+
+*[From the docs](https://kotlinlang.org/docs/reference/coroutines/coroutine-context-and-dispatchers.html#children-of-a-coroutine)* 
+
+*"When a coroutine is launched in the `CoroutineScope` of another coroutine, it inherits its context via `CoroutineScope.coroutineContext` and the Job of the new coroutine becomes a child of the parent coroutine's job. When the parent coroutine is cancelled, all its children are recursively cancelled, too.*
+
+*However, when `GlobalScope` is used to launch a coroutine, it is not tied to the scope it was launched from and operates independently.*"
+
+
+This means, basically:
+- Any time an exception is thrown and not handled by any subcoroutine, all other coroutines executing in this context will `.cancel()`
+- No Orphaned coroutines will continue executing, or leak from the context.
+- The exception to this is using `GlobalScope`.
+  - If you do this the coroutine is bounded to the **entire** application lifetime.  
+  - This is a huge potential for leakage here.  Avoid!
+  
+  ## Example
+  
+```kotlin
+val request = launch {
+
+    // it spawns two other jobs, one with GlobalScope
+    GlobalScope.launch {
+        println("job1: I run in GlobalScope and execute independently!")
+        doSomeWork1()
+        println("job1: I am not affected by cancellation of the request")
+    }
+    // and the other inherits the parent context
+    launch {
+        delay(100)
+        println("job2: I am a child of the request coroutine")
+        doSomeWork2()
+        println("job2: I will not execute this line if my parent request is cancelled")
+    }
+    
+    launch {
+       println("job3: I am a child of the request coroutine")
+       doSomeWork3()
+       println("job3: I will not execute this line if my parent request is cancelled")
+    }
+}
+```
+
+- If `doSomeWork2()` throws an exception
+  - Anything within the request's `CoroutineContext` is canceled`ed
+  - This includes `job3` (`doSomeWork3()`)
+  - `job1` is **NOT** canceled ! 
+    - The coroutine leaks 💧!
+  
