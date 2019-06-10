@@ -167,7 +167,7 @@ This means, basically:
   - If you do this the coroutine is bounded to the **entire** application lifetime.  
   - This is a huge potential for leakage here.  Avoid!
   
-  ## Example
+## Example
   
 ```kotlin
 val request = launch {
@@ -195,7 +195,7 @@ val request = launch {
 ```
 
 - If `doSomeWork2()` throws an exception
-  - Anything within the request's `CoroutineContext` is canceled`ed
+  - Anything within the request's `CoroutineContext` is canceled
   - This includes `job3` (`doSomeWork3()`)
   - `job1` is **NOT** canceled ! 
     - The coroutine leaks 💧!
