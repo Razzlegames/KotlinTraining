@@ -155,7 +155,7 @@ This is really handy for measuring Service call metrics at a granular level!
 
 *[From the docs](https://kotlinlang.org/docs/reference/coroutines/coroutine-context-and-dispatchers.html#children-of-a-coroutine)* 
 
->*"When a coroutine is launched in the `CoroutineScope` of another coroutine, it inherits its context via >`CoroutineScope.coroutineContext` and the Job of the new coroutine becomes a child of the parent coroutine's job. When the parent >coroutine is cancelled, all its children are recursively cancelled, too.*
+>*"When a coroutine is launched in the `CoroutineScope` of another coroutine, it inherits its context via `CoroutineScope.coroutineContext` and the Job of the new coroutine becomes a child of the parent coroutine's job. When the parent coroutine is cancelled, all its children are recursively cancelled, too.*
 
 >*However, when `GlobalScope` is used to launch a coroutine, it is not tied to the scope it was launched from and operates independently.*"
 
