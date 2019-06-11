@@ -10,9 +10,13 @@ do not have direct control as to what thread picks up each task.
      - Tasks are actually queued up and ran in a non-deterministic sequence from a "work" queue for running on the same `JVM` `Thread`
    - You can easily change this to be truly multi threaded.  
   
- 
  - These "light weight threads" are scoped within a `CoroutineScope`
 which will manage the lifetime of the coroutine.
+
+## What's the difference between Threads and Coroutines?
+- Threads are much heavier on resources
+- Applications can easily have many coroutines with little performance impact
+- Many coroutines can exist within the same thread, asynchronously and without blocking. 
 
 ## How to use Coroutines
 
