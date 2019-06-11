@@ -6,7 +6,6 @@ import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
-import kotlin.coroutines.coroutineContext
 import kotlin.system.measureTimeMillis
 import kotlin.test.Test
 import kotlin.test.assertFalse
@@ -118,13 +117,15 @@ class GeneralKotlinCoroutineExamples {
     fun coroutinesWithGlobalScopeContext() {
 
         val list = Collections.synchronizedList(ArrayList<Int>())
-        runBlocking {
 
-            println("-RunBlocking Thread--- start : ${Thread.currentThread().name}")
-            for (i in 0..1000000) {
-                GlobalScope.async {
-                    println("-Thread--- start $i : ${Thread.currentThread().name}")
-                    list.add(i)
+        runBlocking {
+            coroutineScope {
+                println("-RunBlocking Thread--- start : ${Thread.currentThread().name}")
+                for (i in 0..1000000) {
+                    async {
+                        println("-Thread--- start $i : ${Thread.currentThread().name}")
+                        list.add(i)
+                    }
                 }
             }
         }
@@ -161,7 +162,7 @@ class GeneralKotlinCoroutineExamples {
                 .awaitAll()
         }
 
-        println("-Main Thread--- running : ${Thread.currentThread().name}")
+        log("-Main Thread--- running")
 
         verifyListIsNotSequential(list)
     }
@@ -225,16 +226,16 @@ class GeneralKotlinCoroutineExamples {
             val list = Collections.synchronizedList(ArrayList<Int>())
             runBlocking(threadPoolContext) {
 
-                println("-RunBlocking Thread--- start : ${Thread.currentThread().name}")
+               log("-RunBlocking Thread--- start")
                 for (i in 0..10000) {
                     async {
-                        println("-Thread--- start $i : ${Thread.currentThread().name}")
+                        log("-Thread--- start $i")
                         list.add(i)
                     }
                 }
             }
 
-            println("-Main Thread--- running : ${Thread.currentThread().name}")
+            log("-Main Thread--- running")
 
             verifyListIsNotSequential(list)
     }
@@ -254,16 +255,16 @@ class GeneralKotlinCoroutineExamples {
         val list = Collections.synchronizedList(ArrayList<Int>())
         runBlocking(threadPoolContext) {
 
-            println("-RunBlocking Thread--- start : ${Thread.currentThread().name}")
+            log("-RunBlocking Thread--- start")
             for (i in 0..10000) {
                 async {
-                    println("-Thread--- start $i : ${Thread.currentThread().name}")
+                    log("-Thread--- start $i")
                     list.add(i)
                 }
             }
         }
 
-        println("-Main Thread--- running : ${Thread.currentThread().name}")
+        log("-Main Thread--- running")
 
         verifyListIsNotSequential(list)
     }
@@ -322,22 +323,53 @@ class GeneralKotlinCoroutineExamples {
         }
         println("time taken: $time") //prints 7 seconds
     }
+
+    @Test
+    fun onlineTestNoAsync() {
+        val time = measureTimeMillis {
+            runBlocking {
+
+                launch {
+
+                    suspendNoAsync()
+                }
+
+                log("Outside of launch")
+            }
+
+        }
+        println("time taken: $time") //prints 7 seconds
+    }
+
+    suspend fun suspendNoAsync() {
+
+        val first =  firstNumber()
+        val second = secondNumber()
+        val third =  thirdNumber()
+
+        val result = first + second + third
+        println("result $result")
+    }
+
     suspend fun firstNumber(): Int {
-        println("-Thread--- start  : ${Thread.currentThread().name}")
+        log("-firstNumber Thread--- start")
 
         delay(3_000) // 3 seconds delay
+        log("first finished")
         return 5
     }
     suspend fun secondNumber(): Int {
-        println("-Thread--- start  : ${Thread.currentThread().name}")
+        log("-secondNumber Thread--- start")
 
-        delay(5_000) // 5 seconds delay
+        delay(5_00) // 5 seconds delay
+        log("second finished")
         return 8
     }
     suspend fun thirdNumber(): Int {
-        println("-Thread--- start  : ${Thread.currentThread().name}")
+        log("-thirdNumber Thread--- start")
 
         delay(7_000) // 7 seconds delay
+        log("third finished")
         return 10
     }
 
@@ -350,7 +382,7 @@ class GeneralKotlinCoroutineExamples {
             .filter { it.first() > it.last() - 1}
             .also { assertTrue(it.isEmpty()) }
 
-        print("List found where not sequential (Should be empty): $listChunked")
+        log("List found where not sequential (Should be empty): $listChunked")
     }
 
     /**
@@ -365,6 +397,6 @@ class GeneralKotlinCoroutineExamples {
             .filter { it.first() > it.last() - 1}
             .also { assertTrue(it.isNotEmpty()) }
 
-        print("List found, not sequential (should be not empty): $listChunked")
+        log("List found, not sequential (should be not empty): $listChunked")
     }
 }
