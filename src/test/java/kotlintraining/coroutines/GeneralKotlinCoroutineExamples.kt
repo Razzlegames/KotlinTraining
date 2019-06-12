@@ -49,7 +49,6 @@ class GeneralKotlinCoroutineExamples {
                     list.add(i)
                 }
             }
-
         }
 
         println("-Main Thread--- running : ${Thread.currentThread().name}")
@@ -140,8 +139,6 @@ class GeneralKotlinCoroutineExamples {
      *    - If we don't specify a CoroutineContext for any coroutine, AND it isn't in enclosed in a CoroutineContext
      *     -> It will use EmptyCoroutineContext
      *     -> This may all execute on the main thread, or use separate threads depending
-     *
-     *  We just need to use `GlobalScope.async`, if not specifying a ThreadPoolContext to `runBlocking`
      */
     @Test
     fun coroutinesWithcDefaultScopeContextAwaitAll() {
@@ -202,18 +199,18 @@ class GeneralKotlinCoroutineExamples {
         coroutineScope {
             launch {
                 delay(3)
-                println("Task from first launch ${Thread.currentThread().name}")
+                log("Task from first launch")
             }
 
             launch {
                 delay(2)
-                println("Task from second launch ${Thread.currentThread().name}")
+                log("Task from second launch")
             }
 
-            println("Task from coroutine scope ${Thread.currentThread().name}") // This line will be printed before the nested launch
+            log("Task from coroutine scope")
         }
 
-        println("Coroutine scope is over ${Thread.currentThread().name}") // This line is not printed until the nested launch completes
+        log("Coroutine scope is over")
     }
 
     @Test
