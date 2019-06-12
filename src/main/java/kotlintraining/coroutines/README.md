@@ -203,4 +203,65 @@ val request = launch {
   - This includes `job3` (`doSomeWork3()`)
   - `job1` is **NOT** canceled ! 
     - The coroutine leaks 💧!
+    
+    
+# Stop execution and continue later, with `yield`
+
+## Infinite Sequence Example
+
+```kotlin
+   val getPowersOf2 = sequence {
+
+    var value = 1
+
+    while (true) {
+        yield(value)
+        value *= 2
+    }
+}
+```
+
+```kotlin
+val powerOf2 = 5
+val result = getPowersOf2.take(powerOf2+1)
+   .toList()
+   
+//  result = [1, 2, 4, 8, 16, 32]
+```
+
+- You can also call a global function `yeild()` within any suspend function or coroutine
+- This will yield control to any other running coroutines in the same `CoroutineScope`
+
+## Yield control example
+
+```kotlin
+suspend fun manyLogsYieldExample() {
+
+    var i = 1
+    log("called  $i")
+    yield()
+    i++
+    log("called  $i")
+    yield()
+    log("We're done now! :) $i")
+}
+```
+
+Usage
+
+```kotlin
+@Test
+ fun manyLogsYieldExampleTest() {
+
+     runBlocking {
+         launch { manyLogsYieldExample() }
+         launch { manyLogsYieldExample() }
+     }
+ }
+```
+
+### Question: What is printed on the screen?
+
+
+   
   
