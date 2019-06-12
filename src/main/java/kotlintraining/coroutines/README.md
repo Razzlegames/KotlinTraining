@@ -20,6 +20,14 @@ which will manage the lifetime of the coroutine.
 
 ## How to use Coroutines
 
+- Coroutines are *always* bounded to a context/scope. 
+  - Unlike threads which can run unbounded
+- You must create a `CoroutineScope` to run within, using a coroutine builder
+  - `runBlocking{}` from any synchronous code is typical
+  - `coroutineScope{}` builder must be used from within another `CoroutineScope` or from a `suspend` function
+    - This is a great choice for another sub grouping of coroutines, to provide fine grained control for your application.
+- Once you create a `CoroutineScope` you can use popular tools `async` or `launch`
+
 ```kotlin
 
 runBlocking {
