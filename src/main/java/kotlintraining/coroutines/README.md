@@ -181,7 +181,7 @@ This means, basically:
   
 ## How?
 
-You have 3 common ways to organize your coroutines
+You have 3 common ways to organize your coroutines into structured scopes:
 
 - create extension functions of `CoroutineScope`
 
@@ -194,10 +194,25 @@ fun CoroutineScope.doStuff() {
 ```
  
  - The other way is to use the scope explicitly by enclosing them in specific coroutine builders
+ ```kotlin
+ runBlocking {
+    coroutineScope {
+    }
+ }
+ ```
  
  - Lastly you can actually have a class extend `CoroutineScope` if the lifetime of the object fits with the lifetime of your Coroutines.
-   - For example a `Request` scoped object, or in Android and `Activity`
+   - For [example](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-scope/)  a `Request` scoped object, or in Android and `Activity`
  
+ ```kotlin
+ class SomeActivity: CoroutineScope by MainScope() {
+ 
+    // Assuming this is called when the object is destoyed
+    fun shutdown(){
+      cancel()
+    }
+ }
+ ```
   
 ## Example
   
