@@ -86,16 +86,16 @@ class GeneralKotlinCoroutineExamples {
         runBlocking {
 
             GlobalScope.async {
-                println("async  Thread--- start : ${Thread.currentThread().name}")
+                log("async  Thread--- start ")
             }
 
-            println("-RunBlocking Thread--- start : ${Thread.currentThread().name}")
+           log("-RunBlocking Thread--- start")
             val asyncList = ArrayList<Deferred<Any>>()
             for (i in 0..10000) {
 
                 asyncList += async {
                     //assertTrue(Thread.currentThread().name.contains("main"))
-                    println("-Thread--- start $i : ${Thread.currentThread().name}")
+                    log("-Thread--- start $i ")
                     list.add(i)
                     assertTrue(list.isNotEmpty())
                 }
@@ -103,7 +103,7 @@ class GeneralKotlinCoroutineExamples {
             asyncList.awaitAll()
         }
 
-        println("-Main Thread--- running : ${Thread.currentThread().name}")
+        log("-Main Thread--- running ")
 
         verifyListIsSequential(list)
     }

@@ -22,19 +22,9 @@ val getPowersOf2 = sequence {
 /**
  *  TODO Create a simple `sequence`, like above, that computes the Fibonacci sequence (infinite)
  */
-val fibonacci = sequence {
-
-    var prevValue = 0
-    var nextValue = 1
-
-    while(true) {
-        yield(prevValue)
-        val temp = prevValue
-        prevValue = nextValue
-        nextValue = temp + nextValue
-    }
-}
-
+//val fibonacci = sequence {
+//
+//}
 /**
  *  This uses  public suspend fun yield()
  *    It will yield() control to another executing coroutine in the same context
