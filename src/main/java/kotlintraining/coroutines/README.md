@@ -252,6 +252,9 @@ val request = launch {
 
 ## Infinite Sequence Example
 
+- This exaxmple yeilds after computing a single value to the caller. 
+- It resumes state in the loop, on the next `take`
+
 ```kotlin
    val getPowersOf2 = sequence {
 
@@ -272,10 +275,11 @@ val result = getPowersOf2.take(powerOf2+1)
 //  result = [1, 2, 4, 8, 16, 32]
 ```
 
+## Yield control example
+
 - You can also call a global function `yeild()` within any suspend function or coroutine
 - This will yield control to any other running coroutines in the same `CoroutineScope`
 
-## Yield control example
 
 ```kotlin
 suspend fun manyLogsYieldExample() {
