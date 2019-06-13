@@ -179,6 +179,26 @@ This means, basically:
   - If you do this the coroutine is bounded to the **entire** application lifetime.  
   - This is a huge potential for leakage here.  Avoid!
   
+## How?
+
+You have 3 common ways to organize your coroutines
+
+- create extension functions of `CoroutineScope`
+
+```kotlin
+// Anything launched here shares the receiver Coroutine's scope
+//  and any ancestors 
+fun CoroutineScope.doStuff() {
+    launch {  }
+}
+```
+ 
+ - The other way is to use the scope explicitly by enclosing them in specific coroutine builders
+ 
+ - Lastly you can actually have a class extend `CoroutineScope` if the lifetime of the object fits with the lifetime of your Coroutines.
+   - For example a `Request` scoped object, or in Android and `Activity`
+ 
+  
 ## Example
   
 ```kotlin
