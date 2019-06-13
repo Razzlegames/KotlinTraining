@@ -231,3 +231,5 @@ See [lesson 5 instructions](src/main/java/kotlintraining/lesson5/README.md)
 ### Delegation
 See [lesson 6 instructions](src/main/java/kotlintraining/lesson6/README.md)
 
+## Lesson 7
+See [Coroutines](https://github.com/Razzlegames/KotlinTraining/blob/coroutines/src/main/java/kotlintraining/coroutines/README.md)
