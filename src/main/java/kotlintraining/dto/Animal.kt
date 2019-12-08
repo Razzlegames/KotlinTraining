@@ -8,4 +8,12 @@ package kotlintraining.dto
  *     - Any Type without cannot be null
  *     - WARNING: All types that are passed from Java are potentially nullable. Keep this in mind
  */
-data class Animal(val sound: String? = null, val weight: Number)
+data class Animal(val sound: String? = null, val weight: Number) {
+
+    fun doThings() {
+
+        sound?.length
+
+    }
+}
+

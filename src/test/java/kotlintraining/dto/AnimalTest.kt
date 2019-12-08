@@ -1,7 +1,8 @@
 package kotlintraining.dto
 
 import org.junit.Assert.assertNull
-import org.junit.Test
+import kotlin.test.Test
+
 import kotlin.test.assertEquals
 
 class AnimalTest {
@@ -14,7 +15,7 @@ class AnimalTest {
     }
 
     @Test
-    fun testConstructonWithSoundSet() {
+    fun testConstructionWithSoundSet() {
 
         val animal = Animal(weight = 4, sound = "Bark")
 

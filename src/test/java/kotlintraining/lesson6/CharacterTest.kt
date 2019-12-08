@@ -24,4 +24,31 @@ class CharacterTest {
         monster.fly()
     }
 
+    @Test
+    fun testCharacterInterfaceExample() {
+
+        val monster = Monster(flying = FlyingBehavior(), character = CharacterBehavior(),
+            swimming = SwimmingBehavior())
+
+        val charList = listOf(monster, Hero())
+
+        charList.forEach { it.jump() }
+    }
+
+}
+
+class A: Flying {
+    override fun fly() {
+        print("fly A")
+    }
+}
+
+class B: Flying {
+    override fun fly() {
+        print("fly B")
+    }
+}
+
+fun callFly(b: Flying) {
+    b.fly()
 }

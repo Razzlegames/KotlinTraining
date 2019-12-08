@@ -48,7 +48,24 @@ class SwimmingBehavior : Swimming {
     }
 }
 
-// TODO Add a DigBehavior 
+class Hero: Character {
+    override fun moveLeft() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun moveRight() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getName(): String {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun jump() {
+        print("Jump HERO")
+    }
+
+}
 
 // Any implementation of Flying, Swimming etc will be delegated to the passed
 //      Behavior implementation!
@@ -56,5 +73,7 @@ data class Monster( var tailSize:Int = 0, val flying: Flying, val character: Cha
                     val swimming: Swimming) :
     Flying by flying, Character by character,
     Swimming by swimming
+
+
 
 
